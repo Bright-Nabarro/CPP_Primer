@@ -1,0 +1,42 @@
+Strictly speaking, we should precisely define the instructions of the RAM model and their costs. 
+
+To do so, however, would be tedious and yield little insight into algorithm design and analysis. 
+
+Yet we must be careful not to abuse the RAM model. 
+
+For example, what if a RAM had an instruction that sorts? Then you could sort in just one step. 
+
+Such a RAM would be unrealistic, since such instructions do not appear in real computers. 
+
+Our guide, therefore, is how real computers are designed. 
+
+The RAM model contains instructions commonly found in real computers: arithmetic (such as add, subtract, multiply, divide, remainder, floor, ceiling), data movement (load, store, copy), and control (conditional and unconditional branch, subroutine call and return). 
+
+The data types in the RAM model are integer, floating point (for storing real-number approximations), and character. 
+
+Real computers do not usually have a separate data type for the boolean values TRUE and FALSE. 
+
+Instead, they often test whether an integer value is 0 (FALSE) or nonzero (TRUE), as in C. 
+
+Although we typically do not concern ourselves with precision for floating-point values in this book (many numbers cannot be represented exactly in floating point), precision is crucial for most applications. 
+
+We also assume that each word of data has a limit on the number of bits. 
+
+For example, when working with inputs of size n, we typically assume that integers are represented by c log2 n bits for some constant c ≥ 1. 
+
+We require c ≥ 1 so that each word can hold the value of n, enabling us to index the individual input elements, and we restrict c to be a constant so that the word size does not grow arbitrarily. 
+
+(If the word size could grow arbitrarily, we could store huge amounts of data in one word and operate on it all in constant time—an unrealistic scenario.) Real computers contain instructions not listed above, and such instructions represent a gray area in the RAM model. 
+
+For example, is exponentiation a constant-time instruction? In the general case, no: to compute xn when x and n are general integers typically takes time logarithmic in n (see equation (31.34) on page 934), and you must worry about whether the result fits into a computer word. 
+
+If n is an exact power of 2, however, exponentiation can usually be viewed as a constant-time operation. 
+
+Many computers have a “shift left” instruction, which in constant time shifts the bits of an integer by n positions to the left. 
+
+In most computers, shifting the bits of an integer by 1 position to the left is equivalent to multiplying by 2, so that shifting the bits by n positions to the left is equivalent to multiplying by 2n. 
+
+Therefore, such computers can compute 2n in 1 constant-time instruction by shifting the integer 1 by n positions to the left, as long as n is no more than the number of bits in a computer word. 
+
+We’ll try to avoid such gray areas in the RAM model and treat computing 2n and multiplying by 2n as constant-time operations when the result is small enough to fit in a computer word. 
+

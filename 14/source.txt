@@ -1,0 +1,13 @@
+Figure 2.22
+Unsigned addition.With a 4-bit word size,addition is performed
+modulo 16.
+Modular addition forms a mathematical structure known as an abelian group,
+named after the Danish mathematician Niels Henrik Abel (1802-1829).That is,it
+is commutative (that's where the "abelian"part comes in)and associative;it has
+an identity element 0,and every element has an additive inverse.Let us consider
+the set of w-bit unsigned numbers with addition operation+For every valuex,
+there must be some valuex such that=0.When x=0,the additive
+inverse is clearly 0.For x>0,consider the value 24-x.Observe that this number
+is in the range 0<24-x<2i,and (x+2-x)mod 2 2t0 mod 2u0=0.Hence,
+it is the inverse of x under +"These two cases lead to the following equation for
+0≤x<2:
